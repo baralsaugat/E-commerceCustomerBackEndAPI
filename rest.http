@@ -1,4 +1,4 @@
-### getting categories from data base
+###get all the categories
 GET http://localhost:8000/api/v1/category
 
 
@@ -14,3 +14,31 @@ Content-Type: application/json
 {
     "_id":"607ba4ef3902f2891c13fc91"
 }
+
+### Registration of the new clients
+POST http://localhost:8000/api/v1/clientuser
+Content-Type: application/json
+
+{
+    "fName": "saugat",
+    "lName": "baral" ,
+    "email": "baralsaugat@gmail.com",
+    "password": "123456"
+}
+
+
+###login 
+POST http://localhost:8000/api/v1/login
+Content-Type: application/json
+
+{
+     "email": "baralsaugat@gmail.com",
+    "password": "123456"
+}
+
+
+
+
+
+
+
