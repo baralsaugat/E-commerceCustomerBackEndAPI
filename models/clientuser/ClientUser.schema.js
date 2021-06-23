@@ -22,6 +22,18 @@ const ClientUserSchema = mongoose.Schema(
       require: true,
       defualt: "",
     },
+    refreshJWT: {
+      token: {
+        type: String,
+        require: true,
+        default: "",
+      },
+      addedAt: {
+        type: Date,
+        require: true,
+        default: Date.now(),
+      },
+    },
   },
   { timestamp: true }
 );

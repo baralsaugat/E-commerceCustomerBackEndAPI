@@ -1,3 +1,4 @@
+import { resolve } from "path/posix";
 import ProdSchema from "./Product.schema.js";
 
 export const getProducts = () => {
@@ -20,10 +21,21 @@ export const getProductsById = (_id) => {
     }
   });
 };
-export const getProductsByCatId = (_id) => {
+// export const getProductsByCatId = (_id) => {
+//   return new Promise((resolve, reject) => {
+//     try {
+//       const result = ProdSchema.findById(_id);
+//       resolve(result);
+//     } catch (error) {
+//       reject(error);
+//     }
+//   });
+// };
+
+export const getProductsByCatId = (catId) => {
   return new Promise((resolve, reject) => {
     try {
-      const result = ProdSchema.findById(_id);
+      const result = ProdSchema.find({ categories: { $in: catId } });
       resolve(result);
     } catch (error) {
       reject(error);

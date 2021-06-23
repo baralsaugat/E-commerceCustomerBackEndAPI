@@ -2,6 +2,7 @@ import express from "express";
 
 import { comparePassword } from "../helpers/bcrypt.helper.js";
 import { getUserByEmail } from "../models/clientuser/ClientUser.model.js";
+import { createAccessJWT, createRefreshJWT } from "../helpers/jwt.helper.js";
 const router = express.Router();
 
 router.all("*", (req, res, next) => {
@@ -21,19 +22,22 @@ router.post("/", async (req, res) => {
     }
 
     const dbHashPass = user.password;
-    console.log(dbHashPass);
 
     const result = await comparePassword(password, dbHashPass);
 
     if (!result) {
       return res.json({ status: "error", message: "Invalid Login Details" });
     }
+    const accessJWT = await createAccessJWT(user.email, user._id);
+    const refreshJWT = await createRefreshJWT(user.email, user._id);
 
     user.password = undefined;
     res.json({
       status: "success",
       message: "Login Success",
       user,
+      accessJWT,
+      refreshJWT,
     });
   } catch (error) {
     throw new Error(error.message);

@@ -24,12 +24,14 @@ import categoryRouter from "./routers/Category.router.js";
 import productRouter from "./routers/Product.router.js";
 import clientUserRouter from "./routers/ClientUsers.router.js";
 import loginRouter from "./routers/Login.router.js";
+import tokenRouter from "./routers/token.router.js";
 
 // use APIs
 app.use("/api/v1/clientuser", clientUserRouter);
 app.use("/api/v1/category", categoryRouter);
 app.use("/api/v1/product", productRouter);
 app.use("/api/v1/login", loginRouter);
+app.use("/api/v1/token", tokenRouter);
 
 app.get("/", function (req, res) {
   res.send("Express is now working");

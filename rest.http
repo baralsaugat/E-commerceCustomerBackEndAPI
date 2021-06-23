@@ -32,9 +32,14 @@ POST http://localhost:8000/api/v1/login
 Content-Type: application/json
 
 {
-     "email": "baralsaugat@gmail.com",
+      "email": "baralsaugat@gmail.com",
     "password": "123456"
 }
+
+
+###
+GET http://localhost:8000/api/v1/product/catProd/60834c8ccf6ce315a055c508
+
 
 
 
